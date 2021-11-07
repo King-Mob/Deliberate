@@ -36,3 +36,93 @@
     transform: rotate(360deg);
   }
 }
+
+.name-and-colour-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.go-button {
+  height: fit-content;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.proposal-columns-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.back-and-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.draft-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.draft-title {
+  border: none;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.draft-text {
+  border: none;
+  width: 60%;
+  font-family: sans-serif;
+  height: 10rem;
+}
+
+.draft-text-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+}
+
+.draft-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+}
+
+.deliberate-proposal-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deliberate-title {
+  text-align: center;
+}
+
+.deliberate-proposer {
+  text-align: right;
+  width: 60%;
+  margin: 0;
+}
+
+.proposal-line {
+  margin: 0;
+  text-align: left;
+  width: 60%;
+}

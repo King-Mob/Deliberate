@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import "./App.css";
+import Login from "./Screens/Login";
+import Proposals from "./Screens/Proposals";
+import Draft from "./Screens/Draft";
+import Deliberate from "./Screens/Deliberate";
 
 function App() {
+  const [user, setUser] = useState("");
+  const [colour, setColour] = useState("red");
+  const [userColourConfirmed, setUserColourConfirmed] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <Login
+              user={user}
+              setUser={setUser}
+              colour={colour}
+              setColour={setColour}
+              setUserColourConfirmed={setUserColourConfirmed}
+            />
+          }
+        />
+        <Route
+          path="/draft/:draftProposalId"
+          element={<Draft user={user} colour={colour} />}
+        />
+        <Route
+          path="/deliberate/:proposalId"
+          element={<Deliberate user={user} colour={colour} />}
+        />
+        <Route
+          path="/proposals"
+          element={<Proposals user={user} colour={colour} />}
+        />
+        <Route
+          path="/"
+          element={
+            userColourConfirmed ? (
+              <Navigate to="/proposals" />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
