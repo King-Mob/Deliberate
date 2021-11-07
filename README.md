@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Deliberate
+
+Sociocracy finally has a website.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+We use Matrix for the back-end because:
+
+- you can get a backend that provides an immutable timeline of JSON events for free.
+- I have another project that uses Matrix so I can copy and paste from it.
+
+We now return you to your regular create-react-app read me file.
 
 ## Available Scripts
 
