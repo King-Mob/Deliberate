@@ -11,11 +11,6 @@ const Proposals = ({ user, colour }) => {
   const [proposalsLoading, setProposalsLoading] = useState(true);
   const [newProposalId, setNewProposalID] = useState();
 
-  console.log("State of proposals");
-  console.log(drafts);
-  console.log(deliberations);
-  console.log(passedProposals);
-
   const sortProposal = async (proposal) => {
     await client.paginateEventTimeline(proposal.timelineSets[0].liveTimeline, {
       backwards: true,
@@ -28,8 +23,12 @@ const Proposals = ({ user, colour }) => {
     proposal.timeline.forEach((event) => {
       const eventType = event.event.type;
 
+      if (eventType === "m.proposal.draft") {
+        proposal.title = event.event.content.title;
+      }
       if (eventType === "m.proposal.created") {
         created = true;
+        proposal.title = event.event.content.title;
       }
       if (eventType === "m.proposal.passed") {
         passed = true;
@@ -89,7 +88,7 @@ const Proposals = ({ user, colour }) => {
           <h2>Drafts</h2>
           {drafts.map((proposal) => (
             <Link to={`../draft/${proposal.roomId}`} key={proposal.roomId}>
-              <div>{proposal.roomId}</div>
+              <div>{proposal.title ? proposal.title : proposal.roomId}</div>
             </Link>
           ))}
         </div>
@@ -97,14 +96,14 @@ const Proposals = ({ user, colour }) => {
           <h2>Deliberations</h2>
           {deliberations.map((proposal) => (
             <Link to={`../deliberate/${proposal.roomId}`} key={proposal.roomId}>
-              <div>{proposal.roomId}</div>
+              <div>{proposal.title ? proposal.title : proposal.roomId}</div>
             </Link>
           ))}
         </div>
         <div>
           <h2>Passed</h2>
           {passedProposals.map((proposal) => (
-            <div>{proposal.roomId}</div>
+            <div>{proposal.title ? proposal.title : proposal.roomId}</div>
           ))}
         </div>
       </div>

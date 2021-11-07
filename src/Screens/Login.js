@@ -17,6 +17,7 @@ const Login = ({
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}
+            placeholder="display name"
           ></input>
           <div>
             <button value="red" onClick={(e) => setColour(e.target.value)}>
